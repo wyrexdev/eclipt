@@ -1,4 +1,8 @@
 FUNCTIONS
+getX
+getY
+getZ
+getW
 make_identity
 make_from_axis_angle
 make_mul

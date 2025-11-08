@@ -1,0 +1,6 @@
+FUNCTIONS
+getX
+getY
+length
+normalize
+normalized

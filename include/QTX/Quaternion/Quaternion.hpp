@@ -10,7 +10,14 @@ namespace QTX
         Quaternion(float _x, float _y, float _z, float _w)
             : x(_x), y(_y), z(_z), w(_w) {}
         //
-        // ================== STATIC FUNCTIONS START ==================
+        // ================== FUNCTIONS START ==================
+        //
+        // ------- Get Functions START -------
+        float getX() { return x; }
+        float getY() { return y; }
+        float getZ() { return z; }
+        float getW() { return w; }
+        // ------- Get Functions END -------
         //
         // ------- Indetity START -------
         void make_identity()
@@ -82,7 +89,7 @@ namespace QTX
             w = w / length;
         }
         // ------- Normalize END -------
-        // ================== STATIC FUNCTIONS START ==================
+        // ================== FUNCTIONS END ==================
         //
         // ================== STATIC FUNCTIONS START ==================
         //
