@@ -4,3 +4,11 @@ getY
 length
 normalize
 normalized
+
+STATIC FUNCTIONS
+zero
+one
+up
+down
+left
+right

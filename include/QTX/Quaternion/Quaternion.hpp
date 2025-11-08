@@ -89,6 +89,7 @@ namespace QTX
             w = w / length;
         }
         // ------- Normalize END -------
+        //
         // ================== FUNCTIONS END ==================
         //
         // ================== STATIC FUNCTIONS START ==================
