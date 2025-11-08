@@ -72,6 +72,16 @@ namespace QTX
         }
         // ------- Inverse END -------
         //
+        // ------- Normalize START -------
+        void make_normalize() {
+            float length = std::sqrt(x * x + y * y + z * z + w * w);
+
+            x = x / length;
+            y = y / length;
+            z = z / length;
+            w = w / length;
+        }
+        // ------- Normalize END -------
         // ================== STATIC FUNCTIONS START ==================
         //
         // ================== STATIC FUNCTIONS START ==================

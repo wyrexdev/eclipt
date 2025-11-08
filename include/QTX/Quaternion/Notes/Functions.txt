@@ -1,0 +1,16 @@
+FUNCTIONS
+make_identity
+make_from_axis_angle
+make_mul
+make_conjugate
+make_inverse
+make_normalize
+
+STATIC FUNCTIONS 
+quat_identity
+quat_from_axis_angle
+quat_mul
+quat_conjugate
+quat_inverse
+quat_normalize
+quat_normalized
