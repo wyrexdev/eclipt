@@ -11,6 +11,15 @@ namespace QTX
         Quaternion(float _x, float _y, float _z, float _w)
             : x(_x), y(_y), z(_z), w(_w) {}
         //
+        // ------- Destructor -------
+        ~Quaternion()
+        {
+            x = 0;
+            y = 0;
+            z = 0;
+            w = 0;
+        }
+        //
         // ================== FUNCTIONS START ==================
         //
         // ------- Get Functions START -------
@@ -98,6 +107,15 @@ namespace QTX
             w = w / length;
         }
         // ------- Normalize END -------
+        //
+        // ------- Clear START -------
+        void clear() {
+            x = 0;
+            y = 0;
+            z = 0;
+            w = 0;
+        }
+        // ------- Clear END -------
         //
         // ------- Operators START -------
         //

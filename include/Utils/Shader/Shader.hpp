@@ -5,6 +5,6 @@ public:
     Shader();
     ~Shader();
     
-    void loadShader(const std::string &shader, ShaderType type);
+    void loadShader(const std::string &shader, EcliptEnums::ShaderType type);
     void compile();
 };

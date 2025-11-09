@@ -7,9 +7,11 @@
 
 #include <GLFW/glfw3.h>
 
-#include "Utils/Glad/Glad.h"
 #include "Entity/Entity.hpp"
+
+#include "Utils/Glad/Glad.h"
 #include "Utils/Enums/Enums.hpp"
+#include "Utils/Structs/Structs.hpp"
 
 #include "QTX/Quaternion/Quaternion.hpp"
 #include "QTX/Vectors/Vec2.hpp"
