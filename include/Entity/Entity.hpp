@@ -1,4 +1,4 @@
-
+#include "Headers/Headers.hpp"
 
 class Entity {
 public:
@@ -8,5 +8,7 @@ public:
     void draw();
 
 private:
-
+    QTX::Vec3 position;
+    QTX::Vec3 rotation;
+    QTX::Vec3 scale;
 };
