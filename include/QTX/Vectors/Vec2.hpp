@@ -40,6 +40,76 @@ namespace QTX
         }
         // ------- Normalize END -------
         //
+        // ------- Operators START -------
+        //
+        // ------- + -------
+        Vec2 operator+(const Vec2 &v) const
+        {
+            return Vec2(x + v.x, y + v.y);
+        }
+        // ------- - -------
+        Vec2 operator-(const Vec2 &v) const
+        {
+            return Vec2(x - v.x, y - v.y);
+        }
+        // ------- * -------
+        Vec2 operator*(float s) const
+        {
+            return Vec2(x * s, y * s);
+        }
+        // ------- / -------
+        Vec2 operator/(float s) const
+        {
+            if (s == 0.0f)
+                return Vec2(0.0f, 0.0f);
+            float inv = 1.0f / s;
+            return Vec2(x * inv, y * inv);
+        }
+        // ------- += -------
+        Vec2 &operator+=(const Vec2 &v)
+        {
+            x += v.x;
+            y += v.y;
+            return *this;
+        }
+        // ------- -= -------
+        Vec2 &operator-=(const Vec2 &v)
+        {
+            x -= v.x;
+            y -= v.y;
+            return *this;
+        }
+        // ------- *= -------
+        Vec2 &operator*=(float s)
+        {
+            x *= s;
+            y *= s;
+            return *this;
+        }
+        // ------- /= -------
+        Vec2 &operator/=(float s)
+        {
+            if (s == 0.0f)
+                return *this;
+            float inv = 1.0f / s;
+            x *= inv;
+            y *= inv;
+            return *this;
+        }
+        // ------- == -------
+        bool operator==(const Vec2 &v) const
+        {
+            constexpr float EPS = 1e-6f;
+            return (std::fabs(x - v.x) < EPS) && (std::fabs(y - v.y) < EPS);
+        }
+        // ------- != -------
+        bool operator!=(const Vec2 &v) const
+        {
+            return !(*this == v);
+        }
+        //
+        // ------- Operators END -------
+        //
         // ================== FUNCTIONS END ==================
         //
         // ================== STATIC FUNCTIONS START ==================

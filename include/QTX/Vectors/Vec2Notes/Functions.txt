@@ -12,3 +12,15 @@ up
 down
 left
 right
+
+OPERATORS
++
+-
+*
+/
++=
+-=
+*=
+/=
+==
+!=
