@@ -1,14 +1,17 @@
 #include "Headers/Headers.hpp"
 
-class Entity {
-public:
-    Entity();
-    ~Entity();
-    
-    void draw();
+namespace Eclipt
+{
+    class Entity
+    {
+    public:
+        Entity();
+        ~Entity();
 
-private:
-    QTX::Vec3 position;
-    QTX::Vec3 rotation;
-    QTX::Vec3 scale;
-};
+        void draw();
+    private:
+        QTX::Vec3 position;
+        QTX::Vec3 rotation;
+        QTX::Vec3 scale;
+    };
+}

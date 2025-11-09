@@ -1,13 +1,18 @@
 #include "Entity/Entity.hpp"
 
-Entity::Entity() {
+namespace Eclipt
+{
+    Entity::Entity() : position(0, 0, 0),
+                       rotation(0, 0, 0),
+                       scale(0, 0, 0)
+    {
+    }
 
-}
+    Entity::~Entity()
+    {
+    }
 
-Entity::~Entity() {
-
-}
-
-void Entity::draw() {
-    
+    void Entity::draw()
+    {
+    }
 }
