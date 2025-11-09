@@ -19,6 +19,12 @@ namespace QTX
         float getW() { return w; }
         // ------- Get Functions END -------
         //
+        // ------- Length START -------
+        float length() const {
+            return std::sqrt(x * x + y * y + z * z + w * w);
+        }
+        // ------- Length END -------
+        //
         // ------- Indetity START -------
         void make_identity()
         {

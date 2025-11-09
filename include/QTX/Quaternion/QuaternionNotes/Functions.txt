@@ -3,6 +3,7 @@ getX
 getY
 getZ
 getW
+length
 make_identity
 make_from_axis_angle
 make_mul

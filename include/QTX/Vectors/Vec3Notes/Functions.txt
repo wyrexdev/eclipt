@@ -1,0 +1,21 @@
+FUNCTIONS
+getX
+getY
+getZ
+length_squared
+
+STATIC FUNCTIONS
+zero
+one
+
+OPERATORS
++
+-
+*
+/
++=
+-=
+*=
+/=
+==
+!=
