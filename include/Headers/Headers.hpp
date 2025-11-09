@@ -4,6 +4,7 @@
 #include <memory>
 #include <iostream>
 #include <cmath>
+#include <unordered_map>
 
 #include <GLFW/glfw3.h>
 
@@ -16,3 +17,4 @@
 #include "QTX/Quaternion/Quaternion.hpp"
 #include "QTX/Vectors/Vec2.hpp"
 #include "QTX/Vectors/Vec3.hpp"
+#include "QTX/Color/Color.hpp"
