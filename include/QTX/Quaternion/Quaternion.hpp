@@ -20,7 +20,8 @@ namespace QTX
         // ------- Get Functions END -------
         //
         // ------- Length START -------
-        float length() const {
+        float length() const
+        {
             return std::sqrt(x * x + y * y + z * z + w * w);
         }
         // ------- Length END -------
@@ -86,7 +87,8 @@ namespace QTX
         // ------- Inverse END -------
         //
         // ------- Normalize START -------
-        void make_normalize() {
+        void make_normalize()
+        {
             float length = std::sqrt(x * x + y * y + z * z + w * w);
 
             x = x / length;
@@ -95,6 +97,91 @@ namespace QTX
             w = w / length;
         }
         // ------- Normalize END -------
+        //
+        // ------- Operators START -------
+        //
+        // ------- + -------
+        Quaternion operator+(const Quaternion &q) const
+        {
+            return Quaternion(x + q.x, y + q.y, z + q.z, w + q.w);
+        }
+        // ------- - -------
+        Quaternion operator-(const Quaternion &q) const
+        {
+            return Quaternion(x - q.x, y - q.y, z - q.z, w - q.w);
+        }
+        // ------- * -------
+        Quaternion operator*(const Quaternion &q) const
+        {
+            return Quaternion(
+                w * q.x + x * q.w + y * q.z - z * q.y,
+                w * q.y - x * q.z + y * q.w + z * q.x,
+                w * q.z + x * q.y - y * q.x + z * q.w,
+                w * q.w - x * q.x - y * q.y - z * q.z);
+        }
+        // ------- * -------
+        Quaternion operator*(float s) const
+        {
+            return Quaternion(x * s, y * s, z * s, w * s);
+        }
+        // ------- / -------
+        Quaternion operator/(float s) const
+        {
+            if (s == 0.0f)
+                return Quaternion(0, 0, 0, 1);
+            float inv = 1.0f / s;
+            return Quaternion(x * inv, y * inv, z * inv, w * inv);
+        }
+        // ------- *= -------
+        Quaternion &operator*=(const Quaternion &q)
+        {
+            float _x = w * q.x + x * q.w + y * q.z - z * q.y;
+            float _y = w * q.y - x * q.z + y * q.w + z * q.x;
+            float _z = w * q.z + x * q.y - y * q.x + z * q.w;
+            float _w = w * q.w - x * q.x - y * q.y - z * q.z;
+            x = _x;
+            y = _y;
+            z = _z;
+            w = _w;
+            return *this;
+        }
+        // ------- *= -------
+        Quaternion &operator*=(float s)
+        {
+            x *= s;
+            y *= s;
+            z *= s;
+            w *= s;
+            return *this;
+        }
+        // ------- /= -------
+        Quaternion &operator/=(float s)
+        {
+            if (s == 0.0f)
+                return *this;
+            float inv = 1.0f / s;
+            x *= inv;
+            y *= inv;
+            z *= inv;
+            w *= inv;
+            return *this;
+        }
+        // ------- == -------
+        bool operator==(const Quaternion &q) const
+        {
+            constexpr float EPS = 1e-6f;
+            return (std::fabs(x - q.x) < EPS) &&
+                   (std::fabs(y - q.y) < EPS) &&
+                   (std::fabs(z - q.z) < EPS) &&
+                   (std::fabs(w - q.w) < EPS);
+        }
+        // ------- != -------
+        bool operator!=(const Quaternion &q) const
+        {
+            return !(*this == q);
+        }
+        //
+        // ------- Operators END -------
         //
         // ================== FUNCTIONS END ==================
         //

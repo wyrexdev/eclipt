@@ -19,3 +19,15 @@ quat_conjugate
 quat_inverse
 quat_normalize
 quat_normalized
+
+OPERATORS
++
+-
+*
+/
++=
+-=
+*=
+/=
+==
+!=
