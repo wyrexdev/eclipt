@@ -1,12 +1,15 @@
 #pragma once
 
-namespace EcliptIHandlers
+namespace Eclipt
 {
-    struct IColorHandler
+    namespace IHandlers
     {
-        float r = 0;
-        float g = 0;
-        float b = 0;
-        float a = 0;
-    };
+        struct IColorHandler
+        {
+            float r = 0;
+            float g = 0;
+            float b = 0;
+            float a = 0;
+        };
+    }
 }

@@ -1,10 +1,13 @@
 #pragma once
 
-namespace EcliptEnums
+namespace Eclipt
 {
-    enum ShaderType
+    namespace Enums
     {
-        fragmentShader = 0,
-        vertexShader = 1
-    };
+        enum ShaderType
+        {
+            fragmentShader = 0,
+            vertexShader = 1
+        };
+    }
 }
