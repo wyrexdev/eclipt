@@ -5,10 +5,12 @@
 #include <iostream>
 #include <cmath>
 #include <unordered_map>
+#include <vector>
 
 #include <GLFW/glfw3.h>
 
 #include "Entity/Entity.hpp"
+#include "Entity/Component/Component.hpp"
 
 #include "Utils/Glad/Glad.h"
 #include "Utils/Enums/Enums.hpp"

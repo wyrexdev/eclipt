@@ -15,5 +15,7 @@ namespace Eclipt
         Eclipt::QTX::Vec3 scale;
 
         std::unordered_map<std::string, QTX::Color> colors;
+
+        std::vector<Component> components;
     };
 }
