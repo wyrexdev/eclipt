@@ -16,6 +16,6 @@ namespace Eclipt
 
         std::unordered_map<std::string, QTX::Color> colors;
 
-        std::vector<Component> components;
+        std::vector<Eclipt::Component> components;
     };
 }

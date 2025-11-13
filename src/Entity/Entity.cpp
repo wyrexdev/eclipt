@@ -8,6 +8,10 @@ namespace Eclipt
     {
         QTX::Color backgroundColor = QTX::Color(255, 255, 255, 1);
         colors.insert({"backgroundColor", backgroundColor});
+
+        for(Eclipt::Component comp : components) {
+            comp.start();
+        }
     }
 
     Entity::~Entity()
