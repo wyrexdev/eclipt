@@ -1,3 +1,5 @@
+#pragma once
+
 #include "Headers/Headers.hpp"
 
 namespace Eclipt
@@ -8,7 +10,7 @@ namespace Eclipt
         Shader();
         ~Shader();
 
-        void loadShader(const std::string &shader, Eclipt::Enums::ShaderType type);
-        void compile();
+        std::string loadShader(std::string path);
+        void compile(const std::string &shader, Eclipt::Enums::ShaderType type);
     };
 }
