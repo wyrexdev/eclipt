@@ -8,7 +8,7 @@ namespace Eclipt
         Shader();
         ~Shader();
 
-        void loadShader(const std::string &shader, EcliptEnums::ShaderType type);
+        void loadShader(const std::string &shader, Eclipt::Enums::ShaderType type);
         void compile();
     };
 }

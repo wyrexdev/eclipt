@@ -1,5 +1,8 @@
 #pragma once
 
+#define GLFW_INCLUDE_NONE
+#include "Utils/Glad/Glad.h"
+
 #include <string>
 #include <memory>
 #include <iostream>
@@ -9,10 +12,8 @@
 
 #include <GLFW/glfw3.h>
 
-#include "Entity/Entity.hpp"
 #include "Entity/Component/Component.hpp"
 
-#include "Utils/Glad/Glad.h"
 #include "Utils/Enums/Enums.hpp"
 #include "Utils/Structs/Structs.hpp"
 

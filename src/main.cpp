@@ -1,5 +1,3 @@
-#include "Utils/Glad/Glad.c"
-
 #include "Headers/Headers.hpp"
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height) {

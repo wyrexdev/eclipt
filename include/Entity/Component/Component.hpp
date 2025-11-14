@@ -8,7 +8,7 @@ namespace Eclipt
         void start();
         void render();
 
-        virtual void onStart();
-        virtual void onRender();
+        virtual void onStart() {}
+        virtual void onRender() {}
     };
 }
