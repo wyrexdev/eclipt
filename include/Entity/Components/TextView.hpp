@@ -2,6 +2,8 @@
 
 #include "Headers/Headers.hpp"
 
+#include "Entity/Component/Component.hpp"
+
 namespace Eclipt {
     namespace Components
     {

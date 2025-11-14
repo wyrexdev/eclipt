@@ -1,116 +1,54 @@
 #include "Headers/Headers.hpp"
 
-void framebuffer_size_callback(GLFWwindow* window, int width, int height) {
-    // Kare viewport
+#include "Entity/Entity.hpp"
+
+void framebuffer_size_callback(GLFWwindow *window, int width, int height)
+{
     int size = (width < height) ? width : height;
     int x = (width - size) / 2;
     int y = (height - size) / 2;
     glViewport(x, y, size, size);
 }
 
-void processInput(GLFWwindow* window) {
+void processInput(GLFWwindow *window)
+{
     if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
         glfwSetWindowShouldClose(window, true);
 }
 
-const char* vertexShaderSource = R"glsl(
-#version 330 core
-layout (location = 0) in vec3 aPos;
-void main() {
-    gl_Position = vec4(aPos, 1.0);
-}
-)glsl";
-
-const char* fragmentShaderSource = R"glsl(
-#version 330 core
-out vec4 FragColor;
-void main() {
-    FragColor = vec4(0.4, 0.8, 0.2, 1.0);
-}
-)glsl";
-
-int main() {
-    Eclipt::Shader shader = Eclipt::Shader();
-    std::cout << shader.loadShader("shaders/Entity/fragment.glsl") << std::endl;
-
+int main()
+{
     glfwInit();
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-    GLFWwindow* window = glfwCreateWindow(800, 600, "OpenGL Ornek", nullptr, nullptr);
-    if (!window) {
-        std::cerr << "GLFW pencere olusturulamadi\n";
+    GLFWwindow *window = glfwCreateWindow(800, 600, "OpenGL", nullptr, nullptr);
+    if (!window)
+    {
+        std::cerr << "GLFW Window Cannot Create\n";
         glfwTerminate();
         return -1;
     }
 
     glfwMakeContextCurrent(window);
-    if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
-        std::cerr << "GLAD yuklenemedi\n";
+    if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
+    {
+        std::cerr << "GLAD Cannot Load\n";
         return -1;
     }
 
     glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
 
-    // === Shader ===
-    unsigned int vertexShader = glCreateShader(GL_VERTEX_SHADER);
-    glShaderSource(vertexShader, 1, &vertexShaderSource, nullptr);
-    glCompileShader(vertexShader);
 
-    unsigned int fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
-    glShaderSource(fragmentShader, 1, &fragmentShaderSource, nullptr);
-    glCompileShader(fragmentShader);
+    Eclipt::Entity entity = Eclipt::Entity();
 
-    unsigned int shaderProgram = glCreateProgram();
-    glAttachShader(shaderProgram, vertexShader);
-    glAttachShader(shaderProgram, fragmentShader);
-    glLinkProgram(shaderProgram);
-    glDeleteShader(vertexShader);
-    glDeleteShader(fragmentShader);
-
-    // === Üçgen verileri ===
-    float vertices[] = {
-         -1.0f, -1.0f, 0.0f,
-         -1.0f, 1.0f, 0.0f,
-         1.0f, 1.0f, 0.0f,
-         1.0f, -1.0f, 0.0f
-    };
-
-    int drawOrder[] = {
-        0, 1, 2,
-        0, 2, 3
-    };
-
-    unsigned int VAO, VBO, EBO;
-    glGenVertexArrays(1, &VAO);
-    glGenBuffers(1, &VBO);
-    glGenBuffers(1, &EBO);
-
-    glBindVertexArray(VAO);
-
-    glBindBuffer(GL_ARRAY_BUFFER, VBO);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(drawOrder), drawOrder, GL_STATIC_DRAW);
-
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
-    glEnableVertexAttribArray(0);
-
-    glBindBuffer(GL_ARRAY_BUFFER, 0);
-    glBindVertexArray(0);
-
-    // === Render loop ===
-    while (!glfwWindowShouldClose(window)) {
+    while (!glfwWindowShouldClose(window))
+    {
         processInput(window);
 
-        glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
-        glClear(GL_COLOR_BUFFER_BIT);
-
-        glUseProgram(shaderProgram);
-        glBindVertexArray(VAO);
-        glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+        // RENDER HERE
+        entity.draw();
 
         glfwSwapBuffers(window);
         glfwPollEvents();

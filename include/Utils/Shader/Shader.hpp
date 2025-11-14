@@ -2,6 +2,8 @@
 
 #include "Headers/Headers.hpp"
 
+#include "Utils/Enums/Enums.hpp"
+
 namespace Eclipt
 {
     class Shader

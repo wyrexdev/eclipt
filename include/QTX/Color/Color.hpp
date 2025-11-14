@@ -2,6 +2,12 @@
 
 #include "Headers/Headers.hpp"
 
+#include "Utils/Structs/Structs.hpp"
+
+#include "QTX/Quaternion/Quaternion.hpp"
+#include "QTX/Vectors/Vec2.hpp"
+#include "QTX/Vectors/Vec3.hpp"
+
 namespace Eclipt
 {
     namespace QTX
