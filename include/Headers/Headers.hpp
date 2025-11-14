@@ -21,3 +21,5 @@
 #include "QTX/Vectors/Vec2.hpp"
 #include "QTX/Vectors/Vec3.hpp"
 #include "QTX/Color/Color.hpp"
+
+#include "Entity/Entity.hpp"
