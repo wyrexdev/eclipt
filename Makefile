@@ -34,6 +34,9 @@ clean:
 	rm -rf $(OBJ_DIR) $(BIN_DIR)
 	@echo "[✗] Cleaned"
 
+run:
+	./build/bin/Ecplit
+
 rebuild: clean all
 
 print:

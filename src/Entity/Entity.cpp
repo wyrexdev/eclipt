@@ -17,9 +17,13 @@ namespace Eclipt
     Entity::~Entity()
     {
         colors.clear();
+        components.clear();
     }
 
     void Entity::draw()
     {
+        for(Eclipt::Component comp : components) {
+            comp.render();
+        }
     }
 }

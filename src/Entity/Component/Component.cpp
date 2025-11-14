@@ -2,6 +2,10 @@
 
 namespace Eclipt
 {
+    Component::~Component() {
+
+    }
+
     void Component::start() {
         onStart();
     }

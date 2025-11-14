@@ -5,6 +5,8 @@ namespace Eclipt
     class Component
     {
     public:
+        ~Component();
+        
         void start();
         void render();
 

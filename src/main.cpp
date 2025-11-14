@@ -1,7 +1,11 @@
 #include "Headers/Headers.hpp"
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height) {
-    glViewport(0, 0, width, height);
+    // Kare viewport
+    int size = (width < height) ? width : height;
+    int x = (width - size) / 2;
+    int y = (height - size) / 2;
+    glViewport(x, y, size, size);
 }
 
 void processInput(GLFWwindow* window) {
