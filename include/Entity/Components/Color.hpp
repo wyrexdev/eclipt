@@ -20,5 +20,8 @@ namespace Eclipt
         void setBackgroundColor(std::string hex);
 
         std::unordered_map<std::string, std::variant<QTX::Color, std::string>> getBackgroundColor();
+
+    private:
+        std::unordered_map<std::string, QTX::Color> colors;
     };
 }

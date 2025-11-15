@@ -11,9 +11,9 @@ namespace Eclipt
 
         shader = Eclipt::Shader();
 
-        for (Eclipt::Component comp : components)
+        for (Eclipt::Component *comp : components)
         {
-            comp.start();
+            comp->start();
         }
 
         std::string fragSrcStr = shader.loadShader("shaders/Entity/fragment.glsl");
@@ -74,9 +74,9 @@ namespace Eclipt
 
     void Entity::draw()
     {
-        for (Eclipt::Component comp : components)
+        for (Eclipt::Component *comp : components)
         {
-            comp.render();
+            comp->render();
         }
 
         glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
@@ -89,5 +89,10 @@ namespace Eclipt
 
         glBindVertexArray(VAO);
         glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+    }
+
+    void Entity::addComponent(Eclipt::Component *comp) {
+        comp->setEntity(this);
+        components.push_back(comp);
     }
 }

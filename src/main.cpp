@@ -45,12 +45,11 @@ int main()
 
     Eclipt::Entity *entity = new Eclipt::Entity();
 
-    Eclipt::Color color = Eclipt::Color();
-    color.setEntity(entity);
-    color.setBackgroundColor(1, 0, 0, 1);
-    
-    entity->components.push_back(color);
+    Eclipt::Color *color = new Eclipt::Color();
+    color->setBackgroundColor(1, 1, 0, 1);
 
+    entity->addComponent(color);
+    
     while (!glfwWindowShouldClose(window))
     {
         processInput(window);
