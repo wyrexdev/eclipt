@@ -6,7 +6,7 @@ namespace Eclipt
                        rotation(0, 0, 0),
                        scale(0, 0, 0)
     {
-        QTX::Color backgroundColor = QTX::Color(255, 255, 255, 1);
+        QTX::Color backgroundColor = QTX::Color(255, 255, 255, 255);
         colors.insert({"backgroundColor", backgroundColor});
 
         shader = Eclipt::Shader();
@@ -83,6 +83,10 @@ namespace Eclipt
         glClear(GL_COLOR_BUFFER_BIT);
 
         glUseProgram(shaderProgram);
+
+        int backgroundColorLoc = glGetUniformLocation(shaderProgram, "backgroundColor");
+        glUniform4f(backgroundColorLoc, colors.at("backgroundColor").getColor().r, colors.at("backgroundColor").getColor().b, colors.at("backgroundColor").getColor().g, colors.at("backgroundColor").getColor().a);
+
         glBindVertexArray(VAO);
         glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
     }
