@@ -11,6 +11,8 @@
 
 namespace Eclipt
 {
+    class Component;
+    
     class Entity
     {
     public:

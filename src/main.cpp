@@ -2,6 +2,8 @@
 
 #include "Entity/Entity.hpp"
 
+#include "Entity/Components/Color.hpp"
+
 void framebuffer_size_callback(GLFWwindow *window, int width, int height)
 {
     int size = (width < height) ? width : height;
@@ -41,14 +43,20 @@ int main()
     glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
 
 
-    Eclipt::Entity entity = Eclipt::Entity();
+    Eclipt::Entity *entity = new Eclipt::Entity();
+
+    Eclipt::Color color = Eclipt::Color();
+    color.setEntity(entity);
+    color.setBackgroundColor(1, 0, 0, 1);
+    
+    entity->components.push_back(color);
 
     while (!glfwWindowShouldClose(window))
     {
         processInput(window);
 
         // RENDER HERE
-        entity.draw();
+        entity->draw();
 
         glfwSwapBuffers(window);
         glfwPollEvents();

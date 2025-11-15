@@ -2,10 +2,6 @@
 
 namespace Eclipt
 {
-    Component::Component(Eclipt::Entity e) {
-        entity = e;
-    }
-
     Component::~Component() {
 
     }
@@ -18,7 +14,11 @@ namespace Eclipt
         onRender();
     }
 
-    Eclipt::Entity Component::getEntity() {
+    void Component::setEntity(Eclipt::Entity *e) {
+        entity = e;
+    }
+
+    Eclipt::Entity *Component::getEntity() {
         return entity;
     }
 }

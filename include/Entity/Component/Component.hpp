@@ -4,10 +4,11 @@
 
 namespace Eclipt
 {
+    class Entity;
+    
     class Component
     {
     public:
-        Component(Eclipt::Entity e);
         ~Component();
 
         void start();
@@ -16,9 +17,10 @@ namespace Eclipt
         virtual void onStart() {}
         virtual void onRender() {}
 
-        Eclipt::Entity getEntity();
+        void setEntity(Eclipt::Entity *e);
+        Eclipt::Entity *getEntity();
 
     private:
-        Eclipt::Entity entity;
+        Eclipt::Entity *entity;
     };
 }

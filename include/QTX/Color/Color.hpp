@@ -40,6 +40,30 @@ namespace Eclipt
 
                 return c;
             }
+            //
+            std::string getHexColor()
+            {
+                auto toHex = [](float v)
+                {
+                    int val;
+
+                    if (v <= 1.0f)
+                        val = std::round(v * 255.0f);
+                    else
+                        val = static_cast<int>(v);
+
+                    char buf[3];
+                    snprintf(buf, sizeof(buf), "%02X", val);
+                    return std::string(buf);
+                };
+
+                float r = color.getX();
+                float g = color.getY();
+                float b = color.getZ();
+                float a = color.getW();
+
+                return toHex(r) + toHex(g) + toHex(b) + toHex(a);
+            }
             // ------- GetColor END -------
             //
             // ------- SetColor START -------

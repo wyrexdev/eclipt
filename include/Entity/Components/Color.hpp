@@ -1,10 +1,12 @@
+#pragma once
+
 #include "Headers/Headers.hpp"
 #include "Entity/Component/Component.hpp"
 #include "QTX/Color/Color.hpp"
 
 namespace Eclipt
 {
-    class Color : Component
+    class Color : public Component
     {
     public:
         Color();
