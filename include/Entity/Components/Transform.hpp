@@ -9,6 +9,8 @@ namespace Eclipt
     class Transform : public Component
     {
     public:
+        Transform();
+        
         void onStart() override;
         void onRender() override;
 

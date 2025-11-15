@@ -8,6 +8,7 @@
 
 #include "QTX/Vectors/Vec3.hpp"
 #include "QTX/Color/Color.hpp"
+#include "QTX/Matris/Mat4.hpp"
 
 namespace Eclipt
 {

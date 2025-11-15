@@ -3,6 +3,7 @@
 #include "Entity/Entity.hpp"
 
 #include "Entity/Components/Color.hpp"
+#include "Entity/Components/Transform.hpp"
 
 void framebuffer_size_callback(GLFWwindow *window, int width, int height)
 {
@@ -48,6 +49,13 @@ int main()
     color->setBackgroundColor(1, 1, 0, 1);
 
     entity->addComponent(color);
+
+    Eclipt::Transform *transform = new Eclipt::Transform();
+    transform->setPosition(Eclipt::QTX::Vec3(0, 0, 0));
+    transform->setScale(Eclipt::QTX::Vec3(0.5f, 1, 1));
+    transform->setRotation(Eclipt::QTX::Vec3(0, 0, 0));
+
+    entity->addComponent(transform);
     
     while (!glfwWindowShouldClose(window))
     {

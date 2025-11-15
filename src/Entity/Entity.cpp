@@ -84,6 +84,16 @@ namespace Eclipt
 
         glUseProgram(shaderProgram);
 
+        int modelLoc = glGetUniformLocation(shaderProgram, "model");
+
+        Eclipt::QTX::Mat4 model = Eclipt::QTX::Mat4::identity();
+        model = Eclipt::QTX::Mat4::translate(position.getX(),
+                                             position.getY(),
+                                             position.getZ()) *
+                Eclipt::QTX::Mat4::rotateX(rotation.getX()) * Eclipt::QTX::Mat4::rotateY(rotation.getY()) * Eclipt::QTX::Mat4::rotateZ(rotation.getZ()) * Eclipt::QTX::Mat4::scale(scale.getX(), scale.getY(), scale.getZ());
+
+        glUniformMatrix4fv(modelLoc, 1, GL_FALSE, &model.m[0][0]);
+
         int backgroundColorLoc = glGetUniformLocation(shaderProgram, "backgroundColor");
         glUniform4f(backgroundColorLoc, colors.at("backgroundColor").getColor().r, colors.at("backgroundColor").getColor().b, colors.at("backgroundColor").getColor().g, colors.at("backgroundColor").getColor().a);
 
@@ -91,7 +101,8 @@ namespace Eclipt
         glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
     }
 
-    void Entity::addComponent(Eclipt::Component *comp) {
+    void Entity::addComponent(Eclipt::Component *comp)
+    {
         comp->setEntity(this);
         components.push_back(comp);
     }
