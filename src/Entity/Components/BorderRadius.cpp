@@ -7,7 +7,10 @@ namespace Eclipt
     }
 
     void BorderRadius::onRender() {
-
+        glUniform1f(glGetUniformLocation(getEntity()->shaderProgram, "radiusTL"), borderRadius.leftTop);
+        glUniform1f(glGetUniformLocation(getEntity()->shaderProgram, "radiusTR"), borderRadius.rightTop);
+        glUniform1f(glGetUniformLocation(getEntity()->shaderProgram, "radiusBL"), borderRadius.leftBottom);
+        glUniform1f(glGetUniformLocation(getEntity()->shaderProgram, "radiusBR"), borderRadius.rightBottom);
     }
 
     void BorderRadius::setBorderRadius(float degress) {

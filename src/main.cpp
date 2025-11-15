@@ -4,6 +4,7 @@
 
 #include "Entity/Components/Color.hpp"
 #include "Entity/Components/Transform.hpp"
+#include "Entity/Components/BorderRadius.hpp"
 
 void framebuffer_size_callback(GLFWwindow *window, int width, int height)
 {
@@ -55,6 +56,11 @@ int main()
     transform->setScale(Eclipt::QTX::Vec3(0.1f, 0.1f, 0));
 
     entity->addComponent(transform);
+
+    Eclipt::BorderRadius *borderRadius = new Eclipt::BorderRadius();
+    borderRadius->setBorderRadius(0.3f);
+
+    entity->addComponent(borderRadius);
 
     while (!glfwWindowShouldClose(window))
     {

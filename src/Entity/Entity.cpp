@@ -16,8 +16,8 @@ namespace Eclipt
             comp->start();
         }
 
-        std::string fragSrcStr = shader.loadShader("shaders/Entity/fragment.glsl");
-        std::string vertSrcStr = shader.loadShader("shaders/Entity/vertex.glsl");
+        std::string fragSrcStr = shader.loadShader("shaders/basic/fragment.glsl");
+        std::string vertSrcStr = shader.loadShader("shaders/basic/vertex.glsl");
 
         const char *fragmentShaderSource = fragSrcStr.c_str();
         const char *vertexShaderSource = vertSrcStr.c_str();
@@ -95,11 +95,6 @@ namespace Eclipt
 
         int backgroundColorLoc = glGetUniformLocation(shaderProgram, "backgroundColor");
         glUniform4f(backgroundColorLoc, colors.at("backgroundColor").getColor().r, colors.at("backgroundColor").getColor().b, colors.at("backgroundColor").getColor().g, colors.at("backgroundColor").getColor().a);
-
-        glUniform1f(glGetUniformLocation(shaderProgram, "radiusTL"), 0.1f);
-        glUniform1f(glGetUniformLocation(shaderProgram, "radiusTR"), 0.15f);
-        glUniform1f(glGetUniformLocation(shaderProgram, "radiusBL"), 0.05f);
-        glUniform1f(glGetUniformLocation(shaderProgram, "radiusBR"), 0.2f);
 
         glBindVertexArray(VAO);
         glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);

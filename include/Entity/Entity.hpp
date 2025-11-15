@@ -30,10 +30,10 @@ namespace Eclipt
         std::unordered_map<std::string, QTX::Color> colors;
         std::vector<Eclipt::Component*> components;
 
-    private:
         Eclipt::Shader shader;
-
+        
         unsigned int shaderProgram;
         unsigned int VAO, VBO, EBO;
+    private:
     };
 }
