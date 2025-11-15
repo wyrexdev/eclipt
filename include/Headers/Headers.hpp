@@ -11,5 +11,6 @@
 #include <vector>
 #include <iostream>
 #include <fstream>
+#include <variant>
 
 #include <GLFW/glfw3.h>

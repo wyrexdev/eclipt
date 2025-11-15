@@ -18,15 +18,15 @@ namespace Eclipt
         ~Entity();
 
         void draw();
-    private:
+
         Eclipt::QTX::Vec3 position;
         Eclipt::QTX::Vec3 rotation;
         Eclipt::QTX::Vec3 scale;
 
         std::unordered_map<std::string, QTX::Color> colors;
-
         std::vector<Eclipt::Component> components;
 
+    private:
         Eclipt::Shader shader;
 
         unsigned int shaderProgram;
