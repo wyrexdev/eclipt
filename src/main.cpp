@@ -52,15 +52,15 @@ int main()
 
     Eclipt::Transform *transform = new Eclipt::Transform();
     transform->setPosition(Eclipt::QTX::Vec3(0, 0, 0));
-    transform->setScale(Eclipt::QTX::Vec3(0.5f, 1, 1));
-    transform->setRotation(Eclipt::QTX::Vec3(0, 0, 0));
+    transform->setScale(Eclipt::QTX::Vec3(0.1f, 0.1f, 0));
 
     entity->addComponent(transform);
-    
+
     while (!glfwWindowShouldClose(window))
     {
         processInput(window);
 
+        transform->setRotation(Eclipt::QTX::Vec3(0, 0, transform->getEntity()->rotation.getZ() + 0.5f));
         // RENDER HERE
         entity->draw();
 

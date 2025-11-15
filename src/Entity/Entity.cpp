@@ -85,7 +85,6 @@ namespace Eclipt
         glUseProgram(shaderProgram);
 
         int modelLoc = glGetUniformLocation(shaderProgram, "model");
-
         Eclipt::QTX::Mat4 model = Eclipt::QTX::Mat4::identity();
         model = Eclipt::QTX::Mat4::translate(position.getX(),
                                              position.getY(),
@@ -96,6 +95,11 @@ namespace Eclipt
 
         int backgroundColorLoc = glGetUniformLocation(shaderProgram, "backgroundColor");
         glUniform4f(backgroundColorLoc, colors.at("backgroundColor").getColor().r, colors.at("backgroundColor").getColor().b, colors.at("backgroundColor").getColor().g, colors.at("backgroundColor").getColor().a);
+
+        glUniform1f(glGetUniformLocation(shaderProgram, "radiusTL"), 0.1f);
+        glUniform1f(glGetUniformLocation(shaderProgram, "radiusTR"), 0.15f);
+        glUniform1f(glGetUniformLocation(shaderProgram, "radiusBL"), 0.05f);
+        glUniform1f(glGetUniformLocation(shaderProgram, "radiusBR"), 0.2f);
 
         glBindVertexArray(VAO);
         glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
