@@ -42,7 +42,6 @@ int main()
 
     glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
 
-
     Eclipt::Entity *entity = new Eclipt::Entity();
 
     Eclipt::Color *color = new Eclipt::Color();
