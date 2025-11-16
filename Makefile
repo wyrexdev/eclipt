@@ -1,7 +1,7 @@
 TARGET   := Ecplit
 CXX      := g++
-CXXFLAGS := -std=c++20 -O2 -Wall -Wextra -Iinclude
-LDFLAGS  := -lglfw -lvulkan -ldl -lGL
+CXXFLAGS := -std=c++20 -O2 -Wall -Wextra -Iinclude -I/usr/include/freetype2
+LDFLAGS  := -lglfw -lvulkan -ldl -lGL -lfreetype
 
 SRC_DIR  := src
 OBJ_DIR  := build/obj

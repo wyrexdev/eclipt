@@ -35,5 +35,6 @@ namespace Eclipt
         unsigned int shaderProgram;
         unsigned int VAO, VBO, EBO;
     private:
+        bool is_initalized = true;
     };
 }

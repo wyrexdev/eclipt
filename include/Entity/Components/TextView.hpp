@@ -1,18 +1,20 @@
 #pragma once
 
 #include "Headers/Headers.hpp"
-
 #include "Entity/Component/Component.hpp"
+#include "QTX/Ivecs/Ivec2.hpp"
 
-namespace Eclipt {
-    namespace Components
+namespace Eclipt
+{
+    class TextView : public Component
     {
-        class TextView : Component {
-            TextView();
-            ~TextView();
+    public:
+        TextView();
+        ~TextView();
 
-            void onStart() override;
-            void onRender() override;
-        };
-    }
+        void onStart() override;
+        void onRender() override;
+    private:
+    
+    };
 }

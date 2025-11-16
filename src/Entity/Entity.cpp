@@ -11,11 +11,6 @@ namespace Eclipt
 
         shader = Eclipt::Shader();
 
-        for (Eclipt::Component *comp : components)
-        {
-            comp->start();
-        }
-
         std::string fragSrcStr = shader.loadShader("shaders/basic/fragment.glsl");
         std::string vertSrcStr = shader.loadShader("shaders/basic/vertex.glsl");
 
@@ -76,6 +71,10 @@ namespace Eclipt
     {
         for (Eclipt::Component *comp : components)
         {
+            if(is_initalized) {
+                comp->start();
+            }
+
             comp->render();
         }
 

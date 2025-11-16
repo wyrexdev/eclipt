@@ -8,7 +8,7 @@ namespace Eclipt
 
     void Color::onStart()
     {
-           getEntity()->colors = colors;
+        getEntity()->colors = colors;
     }
 
     void Color::onRender()

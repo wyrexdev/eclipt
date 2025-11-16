@@ -5,6 +5,7 @@
 #include "Entity/Components/Color.hpp"
 #include "Entity/Components/Transform.hpp"
 #include "Entity/Components/BorderRadius.hpp"
+#include "Entity/Components/TextView.hpp"
 
 void framebuffer_size_callback(GLFWwindow *window, int width, int height)
 {
@@ -66,7 +67,8 @@ int main()
     {
         processInput(window);
 
-        transform->setRotation(Eclipt::QTX::Vec3(0, 0, transform->getEntity()->rotation.getZ() + 0.5f));
+        transform->setRotation(Eclipt::QTX::Vec3(transform->getEntity()->rotation.getX() + 0.5f, transform->getEntity()->rotation.getY() + 0.5f, transform->getEntity()->rotation.getZ() + 0.5f));
+        
         // RENDER HERE
         entity->draw();
 

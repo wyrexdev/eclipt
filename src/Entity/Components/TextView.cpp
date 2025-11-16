@@ -1,22 +1,19 @@
 #include "Entity/Components/TextView.hpp"
 
-namespace Eclipt {
-    namespace Components
+namespace Eclipt
+{
+    TextView::TextView()
     {
-        TextView::TextView() {
+    }
 
-        }
+    TextView::~TextView()
+    {
+    }
+    void TextView::onStart()
+    {
+    }
 
-        TextView::~TextView() {
-
-        }
-
-        void TextView::onStart() {
-
-        }
-
-        void TextView::onRender() {
-
-        }
+    void TextView::onRender()
+    {
     }
 }

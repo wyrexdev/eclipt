@@ -6,61 +6,61 @@ namespace Eclipt
 {
     namespace QTX
     {
-        class Vec3
+        class Ivec3
         {
         public:
             // ------- Constructor -------
-            Vec3(float _x, float _y, float _z) : x(_x), y(_y), z(_z) {}
+            Ivec3(int _x, int _y, int _z) : x(_x), y(_y), z(_z) {}
+            Ivec3() : x(0), y(0), z(0) {}
             //
             // ================== FUNCTIONS START ==================
             //
             // ------- Get Functions START -------
-            float getX() { return x; }
-            float getY() { return y; }
-            float getZ() { return z; }
+            int getX() const { return x; }
+            int getY() const { return y; }
+            int getZ() const { return z; }
             // ------- Get Functions END -------
             //
             // ------- Length START -------
             float length() const
             {
-                return std::sqrt(x * x + y * y + z * z);
+                return std::sqrt(float(x * x + y * y + z * z));
             }
             // ------- Length END -------
             //
             // ------- LengthSquared START -------
             float length_squared() const
             {
-                return x * x + y * y + z * z;
+                return float(x * x + y * y + z * z);
             }
             // ------- LengthSquared END -------
             //
             // ------- Operators START -------
             //
             // ------- + -------
-            Vec3 operator+(const Vec3 &v) const
+            Ivec3 operator+(const Ivec3 &v) const
             {
-                return Vec3(x + v.x, y + v.y, z + v.z);
+                return Ivec3(x + v.x, y + v.y, z + v.z);
             }
             // ------- - -------
-            Vec3 operator-(const Vec3 &v) const
+            Ivec3 operator-(const Ivec3 &v) const
             {
-                return Vec3(x - v.x, y - v.y, z - v.z);
+                return Ivec3(x - v.x, y - v.y, z - v.z);
             }
-            // ------- * -------
-            Vec3 operator*(float s) const
+            // ------- * (int) -------
+            Ivec3 operator*(int s) const
             {
-                return Vec3(x * s, y * s, z * s);
+                return Ivec3(x * s, y * s, z * s);
             }
-            // ------- / -------
-            Vec3 operator/(float s) const
+            // ------- / (int) -------
+            Ivec3 operator/(int s) const
             {
-                if (s == 0.0f)
-                    return Vec3(0.0f, 0.0f, 0.0f);
-                float inv = 1.0f / s;
-                return Vec3(x * inv, y * inv, z * inv);
+                if (s == 0)
+                    return Ivec3(0, 0, 0);
+                return Ivec3(x / s, y / s, z / s);
             }
             // ------- += -------
-            Vec3 &operator+=(const Vec3 &v)
+            Ivec3 &operator+=(const Ivec3 &v)
             {
                 x += v.x;
                 y += v.y;
@@ -68,7 +68,7 @@ namespace Eclipt
                 return *this;
             }
             // ------- -= -------
-            Vec3 &operator-=(const Vec3 &v)
+            Ivec3 &operator-=(const Ivec3 &v)
             {
                 x -= v.x;
                 y -= v.y;
@@ -76,7 +76,7 @@ namespace Eclipt
                 return *this;
             }
             // ------- *= -------
-            Vec3 &operator*=(float s)
+            Ivec3 &operator*=(int s)
             {
                 x *= s;
                 y *= s;
@@ -84,26 +84,22 @@ namespace Eclipt
                 return *this;
             }
             // ------- /= -------
-            Vec3 &operator/=(float s)
+            Ivec3 &operator/=(int s)
             {
-                if (s == 0.0f)
+                if (s == 0)
                     return *this;
-                float inv = 1.0f / s;
-                x *= inv;
-                y *= inv;
-                z *= inv;
+                x /= s;
+                y /= s;
+                z /= s;
                 return *this;
             }
             // ------- == -------
-            bool operator==(const Vec3 &v) const
+            bool operator==(const Ivec3 &v) const
             {
-                constexpr float EPSILON = 1e-6f;
-                return (std::fabs(x - v.x) < EPSILON) &&
-                       (std::fabs(y - v.y) < EPSILON) &&
-                       (std::fabs(z - v.z) < EPSILON);
+                return (x == v.x) && (y == v.y) && (z == v.z);
             }
             // ------- != -------
-            bool operator!=(const Vec3 &v) const
+            bool operator!=(const Ivec3 &v) const
             {
                 return !(*this == v);
             }
@@ -115,24 +111,24 @@ namespace Eclipt
             // ================== STATIC FUNCTIONS START ==================
             //
             // ------- Zero START -------
-            static Vec3 zero()
+            static Ivec3 zero()
             {
                 return {0, 0, 0};
             }
             // ------- Zero END -------
             //
             // ------- One START -------
-            static Vec3 one()
+            static Ivec3 one()
             {
-                return {0, 0, 0};
+                return {1, 1, 1};
             }
             // ------- One END -------
             //
             // ================== STATIC FUNCTIONS END ==================
-            float x;
-            float y;
-            float z;
         private:
+            int x;
+            int y;
+            int z;
         };
     }
 }

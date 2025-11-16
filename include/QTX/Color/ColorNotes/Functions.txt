@@ -1,4 +1,0 @@
-Constructor and Destructor
-
-FUNCTIONS
-getColor
