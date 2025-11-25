@@ -33,6 +33,18 @@ namespace Eclipt
                 return Mat4(1.0f);
             }
 
+            static Mat4 orthographic(float left, float right, float bottom, float top, float near, float far)
+            {
+                Mat4 result = identity();
+                result.m[0][0] = 2.0f / (right - left);
+                result.m[1][1] = 2.0f / (top - bottom);
+                result.m[2][2] = -2.0f / (far - near);
+                result.m[3][0] = -(right + left) / (right - left);
+                result.m[3][1] = -(top + bottom) / (top - bottom);
+                result.m[3][2] = -(far + near) / (far - near);
+                return result;
+            }
+
             // -------------------------
             // Translation
             // -------------------------

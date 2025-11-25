@@ -69,13 +69,12 @@ namespace Eclipt
 
     void Entity::draw()
     {
-        for (Eclipt::Component *comp : components)
+        if (!is_initalized)
         {
-            if(is_initalized) {
-                comp->start();
-            }
+            for (auto *comp : components)
+                comp->onStart();
 
-            comp->render();
+            is_initalized = true;
         }
 
         glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
@@ -83,12 +82,26 @@ namespace Eclipt
 
         glUseProgram(shaderProgram);
 
+        // PROJECTION MATRIX EKLEYİN
+        int projectionLoc = glGetUniformLocation(shaderProgram, "projection");
+        Eclipt::QTX::Mat4 projection = Eclipt::QTX::Mat4::orthographic(-1.0f, 1.0f, -1.0f, 1.0f, -1.0f, 1.0f);
+        glUniformMatrix4fv(projectionLoc, 1, GL_FALSE, &projection.m[0][0]);
+
+        // VIEW MATRIX EKLEYİN (identity matrix)
+        int viewLoc = glGetUniformLocation(shaderProgram, "view");
+        Eclipt::QTX::Mat4 view = Eclipt::QTX::Mat4::identity();
+        glUniformMatrix4fv(viewLoc, 1, GL_FALSE, &view.m[0][0]);
+
+        // MODEL MATRIX
         int modelLoc = glGetUniformLocation(shaderProgram, "model");
         Eclipt::QTX::Mat4 model = Eclipt::QTX::Mat4::identity();
         model = Eclipt::QTX::Mat4::translate(position.getX(),
                                              position.getY(),
                                              position.getZ()) *
-                Eclipt::QTX::Mat4::rotateX(rotation.getX()) * Eclipt::QTX::Mat4::rotateY(rotation.getY()) * Eclipt::QTX::Mat4::rotateZ(rotation.getZ()) * Eclipt::QTX::Mat4::scale(scale.getX(), scale.getY(), scale.getZ());
+                Eclipt::QTX::Mat4::rotateX(rotation.getX()) *
+                Eclipt::QTX::Mat4::rotateY(rotation.getY()) *
+                Eclipt::QTX::Mat4::rotateZ(rotation.getZ()) *
+                Eclipt::QTX::Mat4::scale(scale.getX(), scale.getY(), scale.getZ());
 
         glUniformMatrix4fv(modelLoc, 1, GL_FALSE, &model.m[0][0]);
 
@@ -97,6 +110,11 @@ namespace Eclipt
 
         glBindVertexArray(VAO);
         glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+
+        for (auto *comp : components)
+            comp->onRender();
+
+        glBindVertexArray(0);
     }
 
     void Entity::addComponent(Eclipt::Component *comp)
