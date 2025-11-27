@@ -211,7 +211,7 @@ namespace Eclipt
             FT_Error error = FT_Init_FreeType(&ft);
             if (error)
             {
-                std::cout << "❌ ERROR: FT_Init_FreeType failed: " << error << std::endl;
+                std::cout << "ERROR: FT_Init_FreeType failed: " << error << std::endl;
                 return false;
             }
             isFTInitialized = true;
@@ -220,7 +220,7 @@ namespace Eclipt
         std::ifstream fontFile(fontPath);
         if (!fontFile.good())
         {
-            std::cout << "❌ ERROR: Font file not found: " << fontPath << std::endl;
+            std::cout << "ERROR: Font file not found: " << fontPath << std::endl;
             return false;
         }
         fontFile.close();
@@ -229,14 +229,14 @@ namespace Eclipt
         FT_Error error = FT_New_Face(ft, fontPath.c_str(), 0, &face);
         if (error)
         {
-            std::cout << "❌ ERROR: Cannot load font face: " << fontPath << " (error: " << error << ")" << std::endl;
+            std::cout << "ERROR: Cannot load font face: " << fontPath << " (error: " << error << ")" << std::endl;
             return false;
         }
 
         error = FT_Set_Pixel_Sizes(face, 0, 128);
         if (error)
         {
-            std::cout << "❌ ERROR: FT_Set_Pixel_Sizes failed: " << error << std::endl;
+            std::cout << "ERROR: FT_Set_Pixel_Sizes failed: " << error << std::endl;
             FT_Done_Face(face);
             return false;
         }
@@ -269,6 +269,7 @@ namespace Eclipt
 
                 glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
                 glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+
                 glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
                 glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
@@ -346,9 +347,6 @@ namespace Eclipt
         int count = 0;
         for (const auto &pair : MSDFCharacters)
         {
-            if (count < 10) { 
-                std::cout << "'" << pair.first << "' ";
-            }
             count++;
         }
         

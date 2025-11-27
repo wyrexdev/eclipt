@@ -6,8 +6,9 @@
 #include "Entity/Components/Transform.hpp"
 #include "Entity/Components/BorderRadius.hpp"
 #include "Entity/Components/TextView.hpp"
+#include "Entity/Components/EditText.hpp"
 
-void framebuffer_size_callback(GLFWwindow* /*window*/, int width, int height)
+void framebuffer_size_callback(GLFWwindow * /*window*/, int width, int height)
 {
     int size = (width < height) ? width : height;
     int x = (width - size) / 2;
@@ -53,10 +54,14 @@ int main()
     entity->addComponent(color);
 
     Eclipt::Transform *transform = new Eclipt::Transform();
-    transform->setPosition(Eclipt::QTX::Vec3(0, 0, 0));
+        transform->setPosition(Eclipt::QTX::Vec3(0, 0, 0));
     transform->setScale(Eclipt::QTX::Vec3(0.2f, 0.2f, 0));
 
     entity->addComponent(transform);
+
+    Eclipt::EditText *editText = new Eclipt::EditText();
+    // entity->addComponent(editText);
+    editText->onStart();
 
     Eclipt::BorderRadius *borderRadius = new Eclipt::BorderRadius();
     // borderRadius->setBorderRadius(0.3f);
@@ -64,16 +69,17 @@ int main()
     entity->addComponent(borderRadius);
 
     Eclipt::TextView *text = new Eclipt::TextView("Hello World", "fonts/nunito.ttf", 24, 64);
-    entity->addComponent(text);
+    // entity->addComponent(text);
 
     while (!glfwWindowShouldClose(window))
     {
         processInput(window);
 
         // transform->setRotation(Eclipt::QTX::Vec3(transform->getEntity()->rotation.getX() + 0.5f, transform->getEntity()->rotation.getY() + 0.5f, transform->getEntity()->rotation.getZ() + 0.5f));
-        
+
         // RENDER HERE
         entity->draw();
+        editText->onRender();
 
         glfwSwapBuffers(window);
         glfwPollEvents();
