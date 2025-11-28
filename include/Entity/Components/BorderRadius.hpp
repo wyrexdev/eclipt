@@ -6,27 +6,30 @@
 
 namespace Eclipt
 {
-    class BorderRadius : public Component
+    namespace Components
     {
-    public:
-        void onStart() override;
-        void onRender() override;
+        class BorderRadius : public Component
+        {
+        public:
+            void onStart() override;
+            void onRender() override;
 
-        void setBorderRadius(float degress);
-        
-        void setLeftBorderRadius(float degress);
-        void setLeftTopBorderRadius(float degress);
-        void setLeftBottomBorderRadius(float degress);
+            void setBorderRadius(float degress);
 
-        void setRightBorderRadius(float degress);
-        void setRightTopBorderRadius(float degress);
-        void setRightBottomBorderRadius(float degress);
+            void setLeftBorderRadius(float degress);
+            void setLeftTopBorderRadius(float degress);
+            void setLeftBottomBorderRadius(float degress);
 
-        void setBorderRadius(Eclipt::IHandlers::IBorderRadiusHandler borderRadius);
+            void setRightBorderRadius(float degress);
+            void setRightTopBorderRadius(float degress);
+            void setRightBottomBorderRadius(float degress);
 
-        Eclipt::IHandlers::IBorderRadiusHandler getBorderRadius();
-    
-    private:
-        Eclipt::IHandlers::IBorderRadiusHandler borderRadius;
-    };
+            void setBorderRadius(Eclipt::IHandlers::IBorderRadiusHandler borderRadius);
+
+            Eclipt::IHandlers::IBorderRadiusHandler getBorderRadius();
+
+        private:
+            Eclipt::IHandlers::IBorderRadiusHandler borderRadius;
+        };
+    }
 }

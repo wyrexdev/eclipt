@@ -6,26 +6,29 @@
 
 namespace Eclipt
 {
-    class Transform : public Component
+    namespace Components
     {
-    public:
-        Transform();
-        
-        void onStart() override;
-        void onRender() override;
+        class Transform : public Component
+        {
+        public:
+            Transform();
 
-        void setPosition(QTX::Vec3 pos);
-        QTX::Vec3 getPosition();
+            void onStart() override;
+            void onRender() override;
 
-        void setRotation(QTX::Vec3 rot);
-        QTX::Vec3 getRotation();
+            void setPosition(QTX::Vec3 pos);
+            QTX::Vec3 getPosition();
 
-        void setScale(QTX::Vec3 scale);
-        QTX::Vec3 getScale();
+            void setRotation(QTX::Vec3 rot);
+            QTX::Vec3 getRotation();
 
-    private:
-        QTX::Vec3 position;
-        QTX::Vec3 rotation;
-        QTX::Vec3 scale;
-    };
+            void setScale(QTX::Vec3 scale);
+            QTX::Vec3 getScale();
+
+        private:
+            QTX::Vec3 position;
+            QTX::Vec3 rotation;
+            QTX::Vec3 scale;
+        };
+    }
 }

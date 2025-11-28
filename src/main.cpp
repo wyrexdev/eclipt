@@ -6,10 +6,14 @@
 #include "Entity/Components/Transform.hpp"
 #include "Entity/Components/BorderRadius.hpp"
 #include "Entity/Components/TextView.hpp"
-#include "Entity/Components/EditText.hpp"
 
-void framebuffer_size_callback(GLFWwindow * /*window*/, int width, int height)
+#include "Core/Widgets/EditText/EditText.hpp"
+
+void framebuffer_size_callback(GLFWwindow * /*window*/, int /*w*/, int /*h*/)
 {
+    int width = 1920;
+    int height = 1080;
+
     int size = (width < height) ? width : height;
     int x = (width - size) / 2;
     int y = (height - size) / 2;
@@ -48,27 +52,27 @@ int main()
 
     Eclipt::Entity *entity = new Eclipt::Entity();
 
-    Eclipt::Color *color = new Eclipt::Color();
+    Eclipt::Components::Color *color = new Eclipt::Components::Color();
     color->setBackgroundColor(1, 0, 0, 1);
 
     entity->addComponent(color);
 
-    Eclipt::Transform *transform = new Eclipt::Transform();
+    Eclipt::Components::Transform *transform = new Eclipt::Components::Transform();
         transform->setPosition(Eclipt::QTX::Vec3(0, 0, 0));
     transform->setScale(Eclipt::QTX::Vec3(0.2f, 0.2f, 0));
 
     entity->addComponent(transform);
 
-    Eclipt::EditText *editText = new Eclipt::EditText();
+    Eclipt::Widgets::EditText *editText = new Eclipt::Widgets::EditText();
     // entity->addComponent(editText);
     editText->onStart();
 
-    Eclipt::BorderRadius *borderRadius = new Eclipt::BorderRadius();
+    Eclipt::Components::BorderRadius *borderRadius = new Eclipt::Components::BorderRadius();
     // borderRadius->setBorderRadius(0.3f);
 
     entity->addComponent(borderRadius);
 
-    Eclipt::TextView *text = new Eclipt::TextView("Hello World", "fonts/nunito.ttf", 24, 64);
+    // Eclipt::Components::TextView *text = new Eclipt::Components::TextView("Hello World", "fonts/nunito.ttf", 24, 64);
     // entity->addComponent(text);
 
     while (!glfwWindowShouldClose(window))

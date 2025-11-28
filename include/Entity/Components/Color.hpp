@@ -6,22 +6,25 @@
 
 namespace Eclipt
 {
-    class Color : public Component
+    namespace Components
     {
-    public:
-        Color();
+        class Color : public Component
+        {
+        public:
+            Color();
 
-        void onStart() override;
-        void onRender() override;
+            void onStart() override;
+            void onRender() override;
 
-        void setBackgroundColor(QTX::Color color);
-        void setBackgroundColor(float r, float b, float g, float a);
-        void setBackgroundColor(float r, float g, float b);
-        void setBackgroundColor(std::string hex);
+            void setBackgroundColor(QTX::Color color);
+            void setBackgroundColor(float r, float b, float g, float a);
+            void setBackgroundColor(float r, float g, float b);
+            void setBackgroundColor(std::string hex);
 
-        std::unordered_map<std::string, std::variant<QTX::Color, std::string>> getBackgroundColor();
+            std::unordered_map<std::string, std::variant<QTX::Color, std::string>> getBackgroundColor();
 
-    private:
-        std::unordered_map<std::string, QTX::Color> colors;
-    };
+        private:
+            std::unordered_map<std::string, QTX::Color> colors;
+        };
+    }
 }
