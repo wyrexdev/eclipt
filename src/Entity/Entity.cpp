@@ -102,15 +102,6 @@ namespace Eclipt
 
         glUniformMatrix4fv(modelLoc, 1, GL_FALSE, &model.m[0][0]);
 
-        int borderSizeLoc = glGetUniformLocation(shaderProgram, "borderSize");
-        glUniform1f(borderSizeLoc, 0.005f);
-
-        int borderColorLoc = glGetUniformLocation(shaderProgram, "borderColor");
-        glUniform4f(borderColorLoc, 1, 1, 1, 1);
-
-        int drawBorderLoc = glGetUniformLocation(shaderProgram, "drawBorder");
-        glUniform1i(drawBorderLoc, true);
-
         int backgroundColorLoc = glGetUniformLocation(shaderProgram, "backgroundColor");
         glUniform4f(backgroundColorLoc, colors.at("backgroundColor").getColor().r, colors.at("backgroundColor").getColor().g, colors.at("backgroundColor").getColor().b, colors.at("backgroundColor").getColor().a);
 

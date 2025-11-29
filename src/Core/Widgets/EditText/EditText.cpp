@@ -24,11 +24,13 @@ namespace Eclipt
             border->addComponent(transform);
 
             Eclipt::Components::BorderRadius *b = new Eclipt::Components::BorderRadius();
-            b->setBorderRadius(0.2f);
+            b->setBorderRadius(0.1f);
+            b->setBorderThickness(0.005f);
+            b->setBorder(Eclipt::Enums::BorderType::solid);
 
             border->addComponent(b);
                 
-            /* textViewComp = new Eclipt::Components::TextView("Hello World", "fonts/nunito.ttf", 24, 64);
+            textViewComp = new Eclipt::Components::TextView("Hello World", "fonts/nunito.ttf", 24, 64);
             textViewComp->setFontSize(100);
 
             Eclipt::Components::Transform *tTransform = new Eclipt::Components::Transform();
@@ -36,12 +38,12 @@ namespace Eclipt
             tTransform->setScale(QTX::Vec3(0.1f, 0.1f, 0.0f));
 
             textView->addComponent(textViewComp);
-            textView->addComponent(tTransform); */
+            textView->addComponent(tTransform); 
         }
 
         void EditText::onRender()
         {
-            // textView->draw();
+            textView->draw();
             border->draw();
         }
     }

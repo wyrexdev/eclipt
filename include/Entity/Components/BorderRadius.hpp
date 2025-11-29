@@ -14,7 +14,10 @@ namespace Eclipt
             void onStart() override;
             void onRender() override;
 
+            void setBorder(Eclipt::Enums::BorderType type);
+
             void setBorderRadius(float degress);
+            void setBorderThickness(float thickness);
 
             void setLeftBorderRadius(float degress);
             void setLeftTopBorderRadius(float degress);
@@ -30,6 +33,8 @@ namespace Eclipt
 
         private:
             Eclipt::IHandlers::IBorderRadiusHandler borderRadius;
+            
+            float thickness = 0;
         };
     }
 }

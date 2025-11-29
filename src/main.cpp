@@ -89,8 +89,8 @@ int main()
         // transform->setRotation(Eclipt::QTX::Vec3(transform->getEntity()->rotation.getX() + 0.5f, transform->getEntity()->rotation.getY() + 0.5f, transform->getEntity()->rotation.getZ() + 0.5f));
 
         // RENDER HERE
-        entity->draw();
-        // editText->onRender();
+        // entity->draw();
+        editText->onRender();
 
         glfwSwapBuffers(window);
         glfwPollEvents();

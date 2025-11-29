@@ -14,6 +14,18 @@ namespace Eclipt
             glUniform1f(glGetUniformLocation(getEntity()->shaderProgram, "radiusTR"), borderRadius.rightTop);
             glUniform1f(glGetUniformLocation(getEntity()->shaderProgram, "radiusBL"), borderRadius.leftBottom);
             glUniform1f(glGetUniformLocation(getEntity()->shaderProgram, "radiusBR"), borderRadius.rightBottom);
+
+            glUniform1f(glGetUniformLocation(getEntity()->shaderProgram, "borderSize"), thickness);
+            glUniform4f(glGetUniformLocation(getEntity()->shaderProgram, "borderColor"), 1, 1, 1, 1);
+            glUniform1i(glGetUniformLocation(getEntity()->shaderProgram, "drawBorder"), true);
+        }
+
+        void BorderRadius::setBorder(Eclipt::Enums::BorderType type)
+        {
+        }
+
+        void BorderRadius::setBorderThickness(float th) {
+            thickness = th;
         }
 
         void BorderRadius::setBorderRadius(float degress)
