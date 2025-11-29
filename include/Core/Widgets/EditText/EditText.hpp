@@ -1,16 +1,18 @@
 #pragma once
 
 #include "Headers/Headers.hpp"
-#include "Entity/Component/Component.hpp"
+
+#include "Core/Widgets/Widget.hpp"
 
 #include "Entity/Components/Transform.hpp"
 #include "Entity/Components/TextView.hpp"
+#include "Entity/Components/BorderRadius.hpp"
 
 namespace Eclipt
 {
     namespace Widgets
     {
-        class EditText : public Component
+        class EditText : public Widget
         {
         public:
             EditText();

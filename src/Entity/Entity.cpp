@@ -77,22 +77,19 @@ namespace Eclipt
             is_initalized = true;
         }
 
-        glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
-        glClear(GL_COLOR_BUFFER_BIT);
-
         glUseProgram(shaderProgram);
 
-        // PROJECTION MATRIX EKLEYİN
+        int uResolutionLoc = glGetUniformLocation(shaderProgram, "uResolution");
+        glUniform2f(uResolutionLoc, 1920, 1080);
+
         int projectionLoc = glGetUniformLocation(shaderProgram, "projection");
         Eclipt::QTX::Mat4 projection = Eclipt::QTX::Mat4::orthographic(-1.0f, 1.0f, -1.0f, 1.0f, -1.0f, 1.0f);
         glUniformMatrix4fv(projectionLoc, 1, GL_FALSE, &projection.m[0][0]);
 
-        // VIEW MATRIX EKLEYİN (identity matrix)
         int viewLoc = glGetUniformLocation(shaderProgram, "view");
         Eclipt::QTX::Mat4 view = Eclipt::QTX::Mat4::identity();
         glUniformMatrix4fv(viewLoc, 1, GL_FALSE, &view.m[0][0]);
 
-        // MODEL MATRIX
         int modelLoc = glGetUniformLocation(shaderProgram, "model");
         Eclipt::QTX::Mat4 model = Eclipt::QTX::Mat4::identity();
         model = Eclipt::QTX::Mat4::translate(position.getX(),
@@ -105,8 +102,17 @@ namespace Eclipt
 
         glUniformMatrix4fv(modelLoc, 1, GL_FALSE, &model.m[0][0]);
 
+        int borderSizeLoc = glGetUniformLocation(shaderProgram, "borderSize");
+        glUniform1f(borderSizeLoc, 0.005f);
+
+        int borderColorLoc = glGetUniformLocation(shaderProgram, "borderColor");
+        glUniform4f(borderColorLoc, 1, 1, 1, 1);
+
+        int drawBorderLoc = glGetUniformLocation(shaderProgram, "drawBorder");
+        glUniform1i(drawBorderLoc, true);
+
         int backgroundColorLoc = glGetUniformLocation(shaderProgram, "backgroundColor");
-        glUniform4f(backgroundColorLoc, colors.at("backgroundColor").getColor().r, colors.at("backgroundColor").getColor().b, colors.at("backgroundColor").getColor().g, colors.at("backgroundColor").getColor().a);
+        glUniform4f(backgroundColorLoc, colors.at("backgroundColor").getColor().r, colors.at("backgroundColor").getColor().g, colors.at("backgroundColor").getColor().b, colors.at("backgroundColor").getColor().a);
 
         glBindVertexArray(VAO);
         glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);

@@ -53,18 +53,17 @@ int main()
     Eclipt::Entity *entity = new Eclipt::Entity();
 
     Eclipt::Components::Color *color = new Eclipt::Components::Color();
-    color->setBackgroundColor(1, 0, 0, 1);
+    color->setBackgroundColor(1, 1, 0, 1);
 
     entity->addComponent(color);
 
     Eclipt::Components::Transform *transform = new Eclipt::Components::Transform();
-        transform->setPosition(Eclipt::QTX::Vec3(0, 0, 0));
+    transform->setPosition(Eclipt::QTX::Vec3(0, 0, 0));
     transform->setScale(Eclipt::QTX::Vec3(0.2f, 0.2f, 0));
 
     entity->addComponent(transform);
 
     Eclipt::Widgets::EditText *editText = new Eclipt::Widgets::EditText();
-    // entity->addComponent(editText);
     editText->onStart();
 
     Eclipt::Components::BorderRadius *borderRadius = new Eclipt::Components::BorderRadius();
@@ -72,17 +71,25 @@ int main()
 
     entity->addComponent(borderRadius);
 
-    // Eclipt::Components::TextView *text = new Eclipt::Components::TextView("Hello World", "fonts/nunito.ttf", 24, 64);
-    // entity->addComponent(text);
+    Eclipt::Components::TextView *text = new Eclipt::Components::TextView("Hello World", "fonts/nunito.ttf", 24, 64);
+    text->setColor(1, 1, 1, 1);
+
+    entity->addComponent(text);
 
     while (!glfwWindowShouldClose(window))
     {
+        glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
+        glClear(GL_COLOR_BUFFER_BIT);
+
+        glEnable(GL_BLEND);
+        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
         processInput(window);
 
         // transform->setRotation(Eclipt::QTX::Vec3(transform->getEntity()->rotation.getX() + 0.5f, transform->getEntity()->rotation.getY() + 0.5f, transform->getEntity()->rotation.getZ() + 0.5f));
 
         // RENDER HERE
-        entity->draw();
+        // entity->draw();
         editText->onRender();
 
         glfwSwapBuffers(window);
