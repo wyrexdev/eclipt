@@ -67,12 +67,12 @@ int main()
     editText->onStart();
 
     Eclipt::Components::BorderRadius *borderRadius = new Eclipt::Components::BorderRadius();
-    // borderRadius->setBorderRadius(0.3f);
+    borderRadius->setBorderRadius(0.3f);
 
     entity->addComponent(borderRadius);
 
     Eclipt::Components::TextView *text = new Eclipt::Components::TextView("Hello World", "fonts/nunito.ttf", 24, 64);
-    text->setColor(1, 1, 1, 1);
+    text->setColor(1, 0, 0, 1);
 
     entity->addComponent(text);
 
@@ -89,8 +89,8 @@ int main()
         // transform->setRotation(Eclipt::QTX::Vec3(transform->getEntity()->rotation.getX() + 0.5f, transform->getEntity()->rotation.getY() + 0.5f, transform->getEntity()->rotation.getZ() + 0.5f));
 
         // RENDER HERE
-        // entity->draw();
-        editText->onRender();
+        entity->draw();
+        // editText->onRender();
 
         glfwSwapBuffers(window);
         glfwPollEvents();

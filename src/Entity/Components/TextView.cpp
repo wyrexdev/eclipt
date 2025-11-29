@@ -395,7 +395,7 @@ namespace Eclipt
             if (hasTextLoc != -1)
                 glUniform1i(hasTextLoc, 1);
             if (textColorLoc != -1)
-                glUniform4f(textColorLoc, 1, 1, 1, 1);
+                glUniform4f(textColorLoc, textColor.getColor().r, textColor.getColor().g, textColor.getColor().b, textColor.getColor().a);
             if (useMSDFLoc != -1)
                 glUniform1i(useMSDFLoc, 1);
             if (msdfRangeLoc != -1)
